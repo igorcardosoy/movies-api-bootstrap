@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Films</title>
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles/global.css">
+    <script defer src="scripts/insertMovies.js"></script>
+    <script defer src="scripts/switchModes.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img id="nav-logo" src="images/logo.png" alt="Logo Filme"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">História</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" aria-disabled="true">Escritor</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Personagens
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Mydoria</a></li>
+                            <li><a class="dropdown-item" href="#">Uraraka</a></li>
+                            <li><a class="dropdown-item" href="#">Tsuyu</a></li>
+                            <li><a class="dropdown-item" href="#">Todoroki</a></li>
+                        </ul>
+                    </li>
+                </ul> -->
+            <img class="switchButton" src="images/darkMode.png" alt="">
+        </div>
+        </div>
+    </nav>
+
+    <main class="flex-display">
+
+        <h1 id="main-title">Filmes Populares</h1>
+
+        <section id="cards" class="flex-display cards">
+            <div id="template">
+                <div class="card-type" data-bs-toggle="modal" data-bs-target="#modal-id-">
+                    <p class="movie-title"></p>
+                    <img class="movie-img" src="https://placehold.co/170x270" alt="AAA">
+                    <div class="modal fade" id="modal-id-" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" data-bs-keyboard="false"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <img class="movie-backdrop" src="https://placehold.co/170x270" alt="a">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="ModalLabel"></h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="my-modal-background">
+                                        <section>
+                                            <h2 class="popularity-title">Popularidade</h2>
+                                            <p class="popularity"></p>
+                                        </section>
+                                        <section>
+                                            <h2 class="vote-avg-title">Avaliação</h2>
+                                            <p class="vote-avg">Média: </p>
+                                            <p class="vote-count"></p>
+                                        </section>
+                                        <section>
+                                            <h2 class="release-date-title">Data de lançamento</h2>
+                                            <p class="release-date"></p>
+                                        </section>
+                                        <section>
+                                            <h2 class="movie-overview-title">Sinopse</h2>
+                                            <p class="movie-overview"></p>
+                                        </section>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="flex-display footer navbar-fixed-bottom">Feito por Igor Cardoso</footer>
+</body>
+
+</html>
