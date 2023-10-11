@@ -9,8 +9,9 @@ async function request() {
     }
   };
 
-  for (let index = 1; index < 4; index++) {
-    const data = await fetch('https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=' + index, options)
+  let idCount = 0
+  for (let pageCount = 1; pageCount < 4; pageCount++) {
+    const data = await fetch('https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=' + pageCount, options)
     const result = await data.json();
     const resultFinal = await result.results;
 
@@ -29,9 +30,8 @@ async function request() {
         document.querySelector('#cards').innerHTML += template.innerHTML
       }
     } else {
-      let index = 0
+      
       resultFinal.forEach(movie => {
-        console.log(index)
 
         template.querySelector('.movie-title').textContent = movie.title
         template.querySelector('.movie-img').setAttribute('src', 'https://image.tmdb.org/t/p/original' + movie.poster_path)
@@ -45,20 +45,20 @@ async function request() {
         template.querySelector('.movie-overview').textContent = movie.overview
 
         template.querySelector('.modal-title').removeAttribute('id')
-        template.querySelector('.modal-title').setAttribute('id', 'modalTitleId' + index)
+        template.querySelector('.modal-title').setAttribute('id', 'modalTitleId' + idCount)
         template.querySelector('.modal-title').textContent = movie.title
 
         template.querySelector('.modal').removeAttribute('id')
-        template.querySelector('.modal').setAttribute('id', 'modal-id-' + index)
+        template.querySelector('.modal').setAttribute('id', 'modal-id-' + idCount)
 
         template.querySelector('.card-type').removeAttribute('data-bs-target')
-        template.querySelector('.card-type').setAttribute('data-bs-target', '#modal-id-' + index)
+        template.querySelector('.card-type').setAttribute('data-bs-target', '#modal-id-' + idCount)
 
         template.querySelector('.modal-title').textContent = movie.title
 
         document.querySelector('#cards').innerHTML += template.innerHTML
 
-        index++;
+        idCount++;
       });
     }
   }
