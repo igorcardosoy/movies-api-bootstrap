@@ -32,7 +32,7 @@ async function request(url = 'https://api.themoviedb.org/3/movie/popular?languag
     }
   };
 
-  const data = await fetch(url + pageCount, options)
+  const data = await fetch(url, options)
   const result = await data.json();
   const resultFinal = await result.results;
 
