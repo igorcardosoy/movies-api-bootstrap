@@ -5,25 +5,25 @@ const popularButton = document.querySelector('#popularity-movies')
 const topRatedButton = document.querySelector('#top-rated-movies')
 const upcomingButton = document.querySelector('#upcoming-movies')
 
-popularButton.addEventListener('click',() => {
-    idCount= 0;
-    document.querySelector('#cards').innerHTML = ''
-    request('https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=')
-    document.querySelector('#main-title').textContent = 'Filmes populares'
+popularButton.addEventListener('click', () => {
+  idCount = 0;
+  document.querySelector('#cards').innerHTML = ''
+  request('https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=')
+  document.querySelector('#main-title').textContent = 'Filmes populares'
 })
 
-topRatedButton.addEventListener('click',() => {
-    idCount= 0;
-    document.querySelector('#cards').innerHTML = ''
-    request('https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=')
-    document.querySelector('#main-title').textContent = 'Filmes mais bem avaliados'
+topRatedButton.addEventListener('click', () => {
+  idCount = 0;
+  document.querySelector('#cards').innerHTML = ''
+  request('https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=')
+  document.querySelector('#main-title').textContent = 'Filmes mais bem avaliados'
 })
 
-upcomingButton.addEventListener('click',() => {
-    idCount = 0;
-    document.querySelector('#cards').innerHTML = ''
-    request('https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=')
-    document.querySelector('#main-title').textContent = 'Filmes Atuais'
+upcomingButton.addEventListener('click', () => {
+  idCount = 0;
+  document.querySelector('#cards').innerHTML = ''
+  request('https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=')
+  document.querySelector('#main-title').textContent = 'Filmes Atuais'
 })
 
 async function request(url = 'https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=') {
@@ -42,20 +42,9 @@ async function request(url = 'https://api.themoviedb.org/3/movie/popular?languag
 
     if (resultFinal == null) {
       for (let index = 1; index < 20; index++) {
-        template.querySelector('.movie-title').textContent = 'Titulo mt foda';
-        template.querySelector('.modal-title').removeAttribute('id')
-        template.querySelector('.modal-title').setAttribute('id', 'modalTitleId' + index)
-        template.querySelector('.modal-title').textContent = 'Titulo mt foda'
-
-        template.querySelector('.modal').removeAttribute('id')
-        template.querySelector('.modal').setAttribute('id', 'modal-id-' + index)
-
-        template.querySelector('.card-type').removeAttribute('data-bs-target')
-        template.querySelector('.card-type').setAttribute('data-bs-target', '#modal-id-' + index)
-        document.querySelector('#cards').innerHTML += template.innerHTML
+        errorComplete(index)
       }
     } else {
-      
       resultFinal.forEach(movie => {
 
         template.querySelector('.movie-title').textContent = movie.title
@@ -91,3 +80,17 @@ async function request(url = 'https://api.themoviedb.org/3/movie/popular?languag
 
 request()
 document.getElementById('template').remove()
+
+function errorComplete(index) {
+  template.querySelector('.movie-title').textContent = 'Titulo mt foda';
+  template.querySelector('.modal-title').removeAttribute('id')
+  template.querySelector('.modal-title').setAttribute('id', 'modalTitleId' + index)
+  template.querySelector('.modal-title').textContent = 'Titulo mt foda'
+
+  template.querySelector('.modal').removeAttribute('id')
+  template.querySelector('.modal').setAttribute('id', 'modal-id-' + index)
+
+  template.querySelector('.card-type').removeAttribute('data-bs-target')
+  template.querySelector('.card-type').setAttribute('data-bs-target', '#modal-id-' + index)
+  document.querySelector('#cards').innerHTML += template.innerHTML
+}
