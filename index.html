@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="styles/global.css">
     <script defer src="scripts/insertMovies.js"></script>
     <script defer src="scripts/switchModes.js"></script>
+    <script defer src="scripts/pages.js"></script>
 </head>
 
 <body>
@@ -25,32 +26,20 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Inicio</a>
+                        <a id="popularity-movies" class="nav-link" aria-current="page" href="#">Populares</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">História</a>
+                        <a id="top-rated-movies" class="nav-link" href="#">Mais bem avaliados</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" aria-disabled="true">Escritor</a>
+                        <a id="upcoming-movies" class="nav-link" href="#" aria-disabled="true">Atuais</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Personagens
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Mydoria</a></li>
-                            <li><a class="dropdown-item" href="#">Uraraka</a></li>
-                            <li><a class="dropdown-item" href="#">Tsuyu</a></li>
-                            <li><a class="dropdown-item" href="#">Todoroki</a></li>
-                        </ul>
-                    </li>
-                </ul> -->
-            <img class="switchButton" src="images/darkMode.png" alt="">
-        </div>
+                </ul>
+                <img class="switchButton" src="images/darkMode.png" alt="">
+            </div>
         </div>
     </nav>
 
@@ -63,8 +52,8 @@
                 <div class="card-type" data-bs-toggle="modal" data-bs-target="#modal-id-">
                     <p class="movie-title"></p>
                     <img class="movie-img" src="https://placehold.co/170x270" alt="AAA">
-                    <div class="modal fade" id="modal-id-" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" data-bs-keyboard="false"
-                        aria-hidden="true">
+                    <div class="modal fade" id="modal-id-" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <img class="movie-backdrop" src="https://placehold.co/170x270" alt="a">

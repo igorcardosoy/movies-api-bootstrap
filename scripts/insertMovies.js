@@ -1,6 +1,32 @@
 let template = document.getElementById('template')
+let tempCopy = template;
+let idCount = 0
+const popularButton = document.querySelector('#popularity-movies')
+const topRatedButton = document.querySelector('#top-rated-movies')
+const upcomingButton = document.querySelector('#upcoming-movies')
 
-async function request() {
+popularButton.addEventListener('click',() => {
+    idCount= 0;
+    document.querySelector('#cards').innerHTML = ''
+    request('https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=')
+    document.querySelector('#main-title').textContent = 'Filmes populares'
+})
+
+topRatedButton.addEventListener('click',() => {
+    idCount= 0;
+    document.querySelector('#cards').innerHTML = ''
+    request('https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=')
+    document.querySelector('#main-title').textContent = 'Filmes mais bem avaliados'
+})
+
+upcomingButton.addEventListener('click',() => {
+    idCount = 0;
+    document.querySelector('#cards').innerHTML = ''
+    request('https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=')
+    document.querySelector('#main-title').textContent = 'Filmes Atuais'
+})
+
+async function request(url = 'https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=') {
   const options = {
     method: 'GET',
     headers: {
@@ -9,9 +35,8 @@ async function request() {
     }
   };
 
-  let idCount = 0
   for (let pageCount = 1; pageCount < 4; pageCount++) {
-    const data = await fetch('https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=' + pageCount, options)
+    const data = await fetch(url + pageCount, options)
     const result = await data.json();
     const resultFinal = await result.results;
 
