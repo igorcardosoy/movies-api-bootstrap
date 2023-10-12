@@ -34,7 +34,7 @@
                         <a id="top-rated-movies" class="nav-link" href="#">Mais bem avaliados</a>
                     </li>
                     <li class="nav-item">
-                        <a id="upcoming-movies" class="nav-link" href="#" aria-disabled="true">Atuais</a>
+                        <a id="upcoming-movies" class="nav-link" href="#" aria-disabled="true">Futuros</a>
                     </li>
                 </ul>
                 <img class="switchButton" src="images/darkMode.png" alt="">
@@ -51,11 +51,10 @@
                 <div class="card-type" data-bs-toggle="modal" data-bs-target="#modal-id-">
                     <p class="movie-title"></p>
                     <img class="movie-img" src="https://placehold.co/170x270" alt="AAA">
-                    <div class="modal fade" id="modal-id-" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+                    <div class="modal fade" id="modal-id-" data-bs-toggle="modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <img class="movie-backdrop" src="https://placehold.co/170x270" alt="a">
+                                <img class="movie-backdrop" src="https://placehold.co/170x270" alt="">
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="ModalLabel"></h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -63,20 +62,20 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="my-modal-background">
-                                        <section>
+                                        <section class="popularity-section">
                                             <h2 class="popularity-title">Popularidade</h2>
                                             <p class="popularity"></p>
                                         </section>
-                                        <section>
+                                        <section class="vote-section">
                                             <h2 class="vote-avg-title">Avaliação</h2>
                                             <p class="vote-avg">Média: </p>
                                             <p class="vote-count"></p>
                                         </section>
-                                        <section>
+                                        <section class="release-section">
                                             <h2 class="release-date-title">Data de lançamento</h2>
                                             <p class="release-date"></p>
                                         </section>
-                                        <section>
+                                        <section class="overview-section">
                                             <h2 class="movie-overview-title">Sinopse</h2>
                                             <p class="movie-overview"></p>
                                         </section>

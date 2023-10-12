@@ -1,5 +1,6 @@
 let template = document.getElementById('template')
 let idCount = 0
+let formatedDate
 
 const popularButton = document.querySelector('#popularity-movies')
 const topRatedButton = document.querySelector('#top-rated-movies')
@@ -7,23 +8,24 @@ const upcomingButton = document.querySelector('#upcoming-movies')
 
 popularButton.addEventListener('click', () => {
   reset()
-  request('https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=')
+  request('https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1')
   document.querySelector('#main-title').textContent = 'Filmes populares'
 })
 
 topRatedButton.addEventListener('click', () => {
   reset()
-  request('https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=')
+  request('https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=1')
   document.querySelector('#main-title').textContent = 'Filmes mais bem avaliados'
 })
 
-upcomingButton.addEventListener('click', () => {
-  reset()
-  request('https://api.themoviedb.org/3/trending/all/week?language=pt-BR')
-  document.querySelector('#main-title').textContent = 'Muitas coisas'
+upcomingButton.addEventListener('click', async () => {
+  await reset()
+  await request('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=1&sort_by=primary_release_date.desc')
+  await request('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=2&sort_by=primary_release_date.desc')  
+  document.querySelector('#main-title').textContent = 'Filmes que ainda vão lançar'
 })
 
-async function request(url = 'https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=') {
+async function request(url = 'https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1') {
   const options = {
     method: 'GET',
     headers: {
@@ -41,28 +43,50 @@ async function request(url = 'https://api.themoviedb.org/3/movie/popular?languag
       errorComplete(index)
     }
   } else {
+
     resultFinal.forEach(movie => {
 
-      if (movie.title == null) {
-        title(movie.name)
-      } else {
-        title(movie.title)
+      console.log(movie)
+      if (movie.poster_path != null) {
+        if (movie.title == null) {
+          formatedDate = new Date(movie.first_air_date);
+          title(movie.name)
+        } else {
+          formatedDate = new Date(movie.release_date);
+          title(movie.title)
+        }
+
+        if (movie.backdrop_path != null) {
+          template.querySelector('.movie-backdrop').src = 'https://image.tmdb.org/t/p/original' + movie.backdrop_path
+        } else {
+          template.querySelector('.movie-backdrop').src = 'https://image.tmdb.org/t/p/original' + movie.poster_path
+        }
+
+        if (movie.vote_average != 0) {
+          template.querySelector('.vote-section').style.display = 'block'
+          template.querySelector('.vote-avg').textContent = 'Nota média: ' + movie.vote_average.toFixed(1)
+          template.querySelector('.vote-count').textContent = 'Quantidade de avaliações: ' + movie.vote_count
+        } else {
+          template.querySelector('.vote-section').style.display = 'none'
+        }
+
+        if (movie.overview != '') {
+          template.querySelector('.overview-section').style.display = 'block'
+          template.querySelector('.movie-overview').textContent = movie.overview
+        } else {
+          template.querySelector('.overview-section').style.display = 'none'
+        }
+
+        template.querySelector('.movie-img').src = 'https://image.tmdb.org/t/p/original' + movie.poster_path
+        template.querySelector('.popularity').textContent = movie.popularity
+        template.querySelector('.release-date').textContent = formatedDate.toLocaleDateString('pt-BR', { timeZone: 'UTC' })
+
+        AtributesAtt()
+
+        document.querySelector('#cards').innerHTML += template.innerHTML
+
+        idCount++;
       }
-
-      template.querySelector('.movie-img').setAttribute('src', 'https://image.tmdb.org/t/p/original' + movie.poster_path)
-      template.querySelector('.movie-backdrop').setAttribute('src', 'https://image.tmdb.org/t/p/original' + movie.backdrop_path)
-      template.querySelector('.vote-avg').textContent = 'Nota média: ' + movie.vote_average
-      template.querySelector('.vote-count').textContent = 'Quantidade de avaliações: ' + movie.vote_count
-      template.querySelector('.popularity').textContent = movie.popularity
-      template.querySelector('.release-date').textContent = movie.release_date
-      template.querySelector('.movie-overview').textContent = movie.overview
-
-      removeAtributesOfTemplate();
-      addAtributesOfTemplate();
-
-      document.querySelector('#cards').innerHTML += template.innerHTML
-
-      idCount++;
     });
   }
 }
@@ -82,16 +106,14 @@ function title(movieTitle) {
 request()
 document.getElementById('template').remove()
 
-function addAtributesOfTemplate() {
-  template.querySelector('.modal-title').setAttribute('id', 'modalTitleId' + idCount)
-  template.querySelector('.modal').setAttribute('id', 'modal-id-' + idCount)
-  template.querySelector('.card-type').setAttribute('data-bs-target', '#modal-id-' + idCount)
-}
-
-function removeAtributesOfTemplate() {
+function AtributesAtt() {
   template.querySelector('.modal-title').removeAttribute('id')
   template.querySelector('.modal').removeAttribute('id')
   template.querySelector('.card-type').removeAttribute('data-bs-target')
+
+  template.querySelector('.modal-title').setAttribute('id', 'modalTitleId' + idCount)
+  template.querySelector('.modal').setAttribute('id', 'modal-id-' + idCount)
+  template.querySelector('.card-type').setAttribute('data-bs-target', '#modal-id-' + idCount)
 }
 
 function errorComplete(index) {
