@@ -107,6 +107,11 @@ footer{
     color: #ffffff;
 }
 
+.modal-footer{
+    z-index: 1;
+    border-top: 0;
+}
+
 .my-modal-background{
     background: #00000096;
     padding: 25px;
