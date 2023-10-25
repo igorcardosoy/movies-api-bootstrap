@@ -19,9 +19,9 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" >
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img id="nav-logo" src="images/logo.png" alt="Logo Filme"></a>
+      <a class="navbar-brand popularity-movies"  href="#"><img id="nav-logo" src="images/logo.png" alt="Logo Filme"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -29,7 +29,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a id="popularity-movies" class="nav-link" aria-current="page" href="#">Populares</a>
+            <a id="popularity-movies" class="nav-link popularity-movies" aria-current="page" href="#">Populares</a>
           </li>
           <li class="nav-item">
             <a id="top-rated-movies" class="nav-link" href="#">Mais bem avaliados</a>
@@ -43,9 +43,9 @@
     </div>
   </nav>
 
+  
+
   <main>
-
-
 
     <section id="main-cards" class="flex-display">
 
@@ -67,28 +67,20 @@
                   </div>
                   <div class="modal-body">
                     <div class="my-modal-background">
-                      <section class="popularity-section">
-                        <h2 class="popularity-title">Popularidade</h2>
-                        <p class="popularity"></p>
-                      </section>
-                      <section class="vote-section">
-                        <h2 class="vote-avg-title">Avaliação</h2>
-                        <p class="vote-avg">Média: </p>
-                        <p class="vote-count"></p>
-                      </section>
-                      <section class="release-section">
-                        <h2 class="release-date-title">Data de lançamento</h2>
-                        <p class="release-date"></p>
-                      </section>
                       <section class="overview-section">
                         <h2 class="movie-overview-title">Sinopse</h2>
                         <p class="movie-overview"></p>
+                      </section>
+
+                      <section class="release-section">
+                        <h2 class="release-date-title">Data de lançamento</h2>
+                        <p class="release-date"></p>
                       </section>
                     </div>
                   </div>
                   <div class="modal-footer">
                     <a name="page-button" id="page-button" class="btn btn-dark page-button" href="#" role="button">Ver
-                      pagina completa</a>
+                      pagina completa e relacionados</a>
                   </div>
                 </div>
               </div>
@@ -98,13 +90,12 @@
       </section>
     </section>
 
-
-
   </main>
 
-
+  
 
   <footer class="flex-display footer navbar-fixed-bottom">Feito por Igor Cardoso</footer>
+
 </body>
 
 </html>

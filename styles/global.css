@@ -1,58 +1,142 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html, body{
-    min-height: 100vh; margin:0;
+html,
+body {
+    min-height: 100vh;
+    margin: 0;
 }
 
-body{
-    display:flex; flex-direction:column;
-}
-
-main{
-    flex:1;
+body {
+    display: flex;
     flex-direction: column;
 }
 
-footer{
-    min-height:50px;
+main {
+    flex: 1;
+    flex-direction: column;
 }
 
-#main-title{
+footer {
+    min-height: 50px;
+}
+
+#main-title {
     margin: 30px;
 }
 
-#nav-logo{ 
+#nav-logo {
     width: 40px;
 }
 
-#template{
+#template {
     display: none;
 }
 
+#movie-info {
+    background-size: cover;
+    background-position: center;
+    border-radius: 25px;
+    width: 85%;
+    margin-top: 30px;
+    flex-direction: column;
+}
 
-.flex-display{
+#background-info {
+    border-radius: 24px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.712);
+}
+
+.nav-info h1 {
+    width: fit-content;
+    height: fit-content;
+}
+
+.carousel img {
+    border-radius: 20px;
+}
+
+.nav-info {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.infos {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.carousel .cards{
+    width: 100%;
+}
+
+.carousel-inner{
+    max-width: 300px;
+}
+
+
+
+.carousel .card-type .movie-img {
+    width: 260px;
+    height: 330px;
+    margin: 10px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.carousel .card-type .movie-title {
+    max-width: 250px;
+    text-align: center;
+}
+
+.carousel-control-next-icon{
+    filter: invert(0);
+}
+
+.carousel {
+    border-radius: 25px;
+    max-width: 500px;
+    height: fit-content;
+    margin-right: 80px;
+    margin-top: 80px;
+}
+
+.info-title {
+    margin: 25px;
+}
+
+.info-type {
+    margin: 25px;
+}
+
+.flex-display {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-.cards{
+.cards {
     width: 90%;
     gap: 35px;
 }
 
-.card-type{
+.card-type {
     min-width: 180px;
     min-height: 343px;
     background-color: rgba(0, 0, 0, 0.378);
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column-reverse;  
+    flex-direction: column-reverse;
     align-items: center;
     justify-content: flex-end;
     gap: 5px;
@@ -64,7 +148,7 @@ footer{
     display: none;
 } */
 
-.card-type .movie-img{
+.card-type .movie-img {
     width: 160px;
     height: 230px;
     margin: 10px;
@@ -72,12 +156,12 @@ footer{
     border-radius: 10px;
 }
 
-.card-type .movie-title{
+.card-type .movie-title {
     max-width: 150px;
     text-align: center;
 }
 
-.movie-backdrop{
+.movie-backdrop {
     object-fit: cover;
     position: absolute;
     width: 100%;
@@ -85,46 +169,45 @@ footer{
     border-radius: 10px;
 }
 
-.modal{
+.modal {
     border-radius: 10px;
     --bs-modal-border-color: 0;
     cursor: auto;
 }
 
-.modal-header{
+.modal-header {
     z-index: 1;
     border-bottom: 0;
 }
 
-.modal-title{
+.modal-title {
     color: #ffffff;
     background: #00000096;
     padding: 8px;
     border-radius: 10px;
 }
 
-.modal-body{
+.modal-body {
     color: #ffffff;
 }
 
-.modal-footer{
+.modal-footer {
     z-index: 1;
     border-top: 0;
 }
 
-.my-modal-background{
+.my-modal-background {
     background: #00000096;
     padding: 25px;
     border-radius: 10px;
 }
 
-.btn-close{
+.btn-close {
     background-color: #ffffff;
     border-radius: 10px;
 }
 
-.switchButton{
+.switchButton {
     width: 60px;
     object-fit: contain;
 }
-

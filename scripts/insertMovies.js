@@ -2,9 +2,11 @@ let template = document.getElementById('card-template')
 let idCount = 0
 let formatedDate
 
-const popularButton = document.querySelector('#popularity-movies')
+const popularButton = document.querySelector('.popularity-movies')
 const topRatedButton = document.querySelector('#top-rated-movies')
 const upcomingButton = document.querySelector('#upcoming-movies')
+
+
 
 popularButton.addEventListener('click', async () => {
   reset()
@@ -64,14 +66,6 @@ async function requestList(url = 'https://api.themoviedb.org/3/movie/popular?lan
           template.querySelector('.movie-backdrop').src = 'https://image.tmdb.org/t/p/original' + movie.poster_path
         }
 
-        if (movie.vote_average != 0) {
-          template.querySelector('.vote-section').style.display = 'block'
-          template.querySelector('.vote-avg').textContent = 'Nota média: ' + movie.vote_average.toFixed(1)
-          template.querySelector('.vote-count').textContent = 'Quantidade de avaliações: ' + movie.vote_count
-        } else {
-          template.querySelector('.vote-section').style.display = 'none'
-        }
-
         if (movie.overview != '') {
           template.querySelector('.overview-section').style.display = 'block'
           template.querySelector('.movie-overview').textContent = movie.overview
@@ -80,7 +74,6 @@ async function requestList(url = 'https://api.themoviedb.org/3/movie/popular?lan
         }
 
         template.querySelector('.movie-img').src = 'https://image.tmdb.org/t/p/original' + movie.poster_path
-        template.querySelector('.popularity').textContent = movie.popularity
         template.querySelector('.release-date').textContent = formatedDate.toLocaleDateString('pt-BR', { timeZone: 'UTC' })
 
         template.querySelector('.page-button').removeAttribute('id')
