@@ -2,11 +2,17 @@ let template = document.getElementById('card-template')
 let idCount = 0
 let formatedDate
 
-const popularButton = document.querySelector('.popularity-movies')
+const logoButton = document.querySelector('.popularity-movies')
+const popularButton = document.querySelector('#popularity-movies')
 const topRatedButton = document.querySelector('#top-rated-movies')
 const upcomingButton = document.querySelector('#upcoming-movies')
 
-
+logoButton.addEventListener('click', async () => {
+  reset()
+  document.querySelector('#main-title').textContent = 'Filmes populares'
+  await requestList('https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1')
+  await buttons()
+})
 
 popularButton.addEventListener('click', async () => {
   reset()
