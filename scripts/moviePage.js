@@ -3,10 +3,6 @@ const main = document.querySelector('main')
 
 let carouselDiv = document.createElement('div')
 
-function requestSimilar(id) {
-
-}
-
 function doPage(movie, id) {
 
   let moviebBackdrop = 'https://image.tmdb.org/t/p/original'
@@ -21,8 +17,6 @@ function doPage(movie, id) {
     p.textContent = '- ' + genres.name
     genresSection.appendChild(p)
   });
-
-  requestSimilar(id)
 
   const options = {
     method: 'GET',
@@ -39,7 +33,7 @@ function doPage(movie, id) {
 
       let isFirst = true
       let carouselItem
-
+      
       list.forEach(movie => {
 
         let moviePoster = 'https://image.tmdb.org/t/p/original'
@@ -82,9 +76,8 @@ function doPage(movie, id) {
 
       carouselDiv.innerHTML = carouselItem
 
-      
-
       if (movie.poster_path != null) {
+
         main.innerHTML +=
           `
         <section id="main-movie" class="flex-display">
@@ -128,7 +121,7 @@ function doPage(movie, id) {
 
               <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                  ${carouselDiv.innerHTML}
+                  ${carouselDiv.innerHTML != 'undefined' ? carouselDiv.innerHTML : ''}
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(0);></span>
